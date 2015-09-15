@@ -1,4 +1,4 @@
-# peerrails/nginx-rtmp
+# peerrails/nginx-rtmp-rtmp
 
 - [Introduction](#introduction)
   - [Contributing](#contributing)
@@ -23,10 +23,10 @@ NGINX is a web server with a strong focus on high concurrency, performance and l
 
 ## Installation
 
-This image is available as a [trusted build](//hub.docker.com/r/peerrails/nginx) on the [Docker hub](//hub.docker.com) and is the recommended method of installation.
+This image is available as a [trusted build](//hub.docker.com/r/peerrails/nginx-rtmp) on the [Docker hub](//hub.docker.com) and is the recommended method of installation.
 
 ```bash
-docker pull peerrails/nginx:1.8.0-5
+docker pull peerrails/nginx-rtmp
 ```
 
 Alternatively you can build the image yourself.
@@ -44,7 +44,7 @@ Start NGINX using:
 ```bash
 docker run --name nginx -d --restart=always \
   --publish 1935:1935 \
-  peerrails/nginx:1.8.0-5
+  peerrails/nginx-rtmp
 ```
 
 *Alternatively, you can use the sample [docker-compose.yml](docker-compose.yml) file to start the container using [Docker Compose](https://docs.docker.com/compose/)*
@@ -56,7 +56,7 @@ You can customize the launch command of NGINX server by specifying arguments to 
 ```bash
 docker run --name nginx -it --rm \
   --publish 80:80 \
-  peerrails/nginx:1.8.0-5 -h
+  peerrails/nginx-rtmp -h
 ```
 
 ## Configuration
@@ -67,7 +67,7 @@ To configure NGINX as per your requirements edit the default [nginx.conf](nginx.
 docker run --name nginx -it --rm \
   --publish 80:80 \
   --volume /srv/docker/nginx/nginx.conf:/etc/nginx/nginx.conf \
-  peerrails/nginx:1.8.0-5
+  peerrails/nginx-rtmp
 ```
 
 To configure virtual hosts, mount the directory containing the virtual host configurations at `/etc/nginx/sites-enabled/`.
@@ -77,7 +77,7 @@ docker run --name nginx -it --rm \
   --publish 80:80 \
   --volume /srv/docker/nginx/nginx.conf:/etc/nginx/nginx.conf \
   --volume /srv/docker/nginx/sites-enabled:/etc/nginx/sites-enabled \
-  peerrails/nginx:1.8.0-5
+  peerrails/nginx-rtmp
 ```
 
 > **Note**: SELinux users should update the security context of the host mountpoints so that it plays nicely with Docker:
@@ -110,7 +110,7 @@ To upgrade to newer releases:
   1. Download the updated Docker image:
 
   ```bash
-  docker pull peerrails/nginx:1.8.0-5
+  docker pull peerrails/nginx-rtmp
   ```
 
   2. Stop the currently running image:
@@ -130,7 +130,7 @@ To upgrade to newer releases:
   ```bash
   docker run -name nginx -d \
     [OPTIONS] \
-    peerrails/nginx:1.8.0-5
+    peerrails/nginx-rtmp
   ```
 
 ## Shell Access
